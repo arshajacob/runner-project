@@ -1,0 +1,10 @@
+echo "Installing................."
+sudo cp runnerx /usr/bin/
+sudo cp runner /usr/bin/
+rm runnerx
+echo "Installation process completed successfully!!"
+echo "Project Development Team: Arsha Jacob,Chinchu Thomas,Jayanandini K.D,Rahul R"
+echo "Developed at: College of Engineering Cherthala, Kerala"
+echo "Happy Coding"
+sudo rm /usr/bin/install_runner
+#rm Variable.txt
