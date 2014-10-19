@@ -1,0 +1,28 @@
+runnerx $1
+if [ $? -eq 0 ]
+then
+	#MacroprocessorNASM assembly.asm processedAssembly.asm	# Removing all the macros from the input file assembly.asm
+	
+	nasm -f elf assembly.asm	# Assembling with NASM
+	if [ $# -eq 2 ]
+	then
+		gcc assembly.o -o $2	# Loading the assembly program
+	else
+		gcc assembly.o		# Loading without output filename
+	fi
+	echo "Compilation completed successfully!!"
+	
+	# Removing all the temporary files generated during compilation process
+	
+	#rm processedAssembly.asm
+	rm assembly.asm		
+	rm assembly.o
+	rm Code.txt
+	rm Macro.txt
+	rm Preprocessed.txt
+	rm Procedure.txt
+	rm Uninitialized.txt
+	rm Variable.txt
+else
+	echo "Clear error and try again"
+fi
