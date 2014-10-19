@@ -1,0 +1,45 @@
+echo "Checking dependencies.........";
+if [ -e /usr/bin/g++ ];
+	then
+	echo "Dependency 1: g++ found";
+
+else 
+	echo "Dependency 1: g++ not found"; 
+	echo "Installing g++..........";
+	sudo apt-get install g++
+	if [ -e /usr/bin/g++ ];
+		then
+		echo "Dependency 1: g++ installed";
+	else 
+		echo "Dependency 1: g++: Error resolving dependency: installation failed";
+		exit
+	fi
+fi
+
+if [ -e /usr/bin/nasm ];
+	then
+	echo "Dependency 2: nasm found";
+
+else 
+	echo "Dependency 2: nasm not found"; 
+	echo "Installing nasm..........";
+	sudo apt-get install nasm
+	if [ -e /usr/bin/nasm ];
+		then
+		echo "Dependency 2: nasm installed";
+	else 
+		echo "Dependency 2: nasm: Error resolving dependency: installation failed";
+		exit
+	fi
+fi
+
+echo "All the dependencies are resolved........";
+g++ Runner.cpp -o runnerx
+if [ $? -eq 0 ]
+	then
+	sudo cp install_runner /usr/bin/ 
+	echo "Process completed successfully!!";
+	echo "sudo install_runner to install";
+else
+	echo "Compilation error occured!!";
+fi
